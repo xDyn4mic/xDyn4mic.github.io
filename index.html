@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fruit Clicker - All You Need Is Juice</title>
+<link class="favicon" rel="shortcut icon" href="" type="image/x-icon">
+<link class="favicon" rel="icon" href="" type="image/x-icon">
+
+<link href='http://fonts.googleapis.com/css?family=Carter+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/styles.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/seasons.js"></script>
+<script type="text/javascript" src="js/unlock.js"></script>
+<script type="text/javascript" src="js/shop.js"></script>
+<script type="text/javascript" src="js/mystery.js"></script>
+<script type="text/javascript" src="js/legendary.js"></script>
+<script type="text/javascript" src="js/misc.js"></script>
+<script type="text/javascript" src="js/achievements.js"></script>
+<script type="text/javascript" src="js/save_load.js"></script>
+</head>
+
+<body>
+	<div id="preload"></div>
+
+	<div id="wrapper">
+    	<div id="header"><h1 style="margin: 0; padding-top:15px;">FruitClicker v<script>document.write(data.version)</script></h1>
+        <ul id="menu">
+            <li class="color_0 hov" onclick="displayInstructions();">How To</li>
+            <li class="color_0 hov submenu">Saves <i class="fa fa-chevron-circle-down"></i>
+                <ul class="level_2">
+                    <li class="color_2 hov" onclick="saveGame(true);">Save</li>
+                    <li class="color_2 hov" onclick="location.reload();"> Load</li>
+                    <li class="color_2 hov" onclick='deleteSave();'>Delete</li>
+                </ul>
+            </li>
+           <!-- <li class="color_0 hov" onclick="displayChangelog()">Changelog</li>
+            <li class="color_0 hov" onclick="displayToDo()">To Do</li>-->
+            <li class="color_0 hov" onclick="displayStats()">Stats</li>
+            <!--<li class="color_0 hov" onclick="displayAchievements()">Achievements</li>-->
+            
+            <!--<li class="color_0" id="reset">Reset</li>-->
+        </ul>
+        </div>
+        
+		<div id="field">
+        	<div id="playground" class="color_1"></div>
+            <span id="season"></span>
+        </div>
+       	<div id="visLoop"><div class="inner color_2"></div></div>
+        <div id="info">
+            <!-- <button id="resetLoop" onclick="stopInterval();">End Loop</button><br /><br /> -->
+            <table>
+                <tr><td>fruits:</td><td class="ressource"></td></tr>
+                <tr><td>mystery fruits:</td><td class="mysteryfruits"></td></tr>
+                <!--<tr><td>legendary fruits:</td><td class="legendaryfruits"></td></tr>
+                <tr><td>interval: </td><td class="interval"></td></tr>-->
+                <tr><td>fruits per click</td><td class="value"></td></tr>
+                <tr><td>fruits per second</td><td class="fps"></td></tr>
+                <!--<tr><td>combo: </td><td class="combo"></td></tr>-->
+            </table>
+        </div>
+        
+       <div id="shopwrapper"><div id="shop"><div class="inner"><ul><!-- upgrade will be generated in shop.js -->
+        </ul></div></div></div>
+        
+        
+        
+	</div>
+	<div id="boxInfo" class="color_1"></div>
+</body>
+</html>

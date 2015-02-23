@@ -1,0 +1,449 @@
+@mixin user-select() {
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;      /* IE 10+ */  
+}
+
+$header: 115px;
+
+* {
+    box-sizing: border-box;
+}
+html{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: 'Exo';
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+.delimiter {
+    clear: both;
+}
+.fa{
+	transition: transform 1s;
+}
+h1{
+	font-family: "Carter One";
+    font-size: 40px;
+}
+h2{
+    font-size: 20px;
+}
+.link{
+	color: #000;
+	cursor: pointer;
+}
+ul{	
+    list-style-type: none;
+    padding: 0;
+}
+div#preload { display: none; }
+#wrapper{
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+#boxInfo{
+    border: 1px solid #000;
+    bottom: 50px;
+    min-height: 30px;
+    left: 0;
+    margin: 0 auto;
+    padding: 5px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    width: 600px;
+	display: none;
+	z-index: 1000000;
+}
+$lh : 50px;
+#header{
+	min-height: $header;
+	h1{
+		line-height: $lh;
+		img{
+			line-height: $lh;
+		}
+	}
+}
+$menuPadding : 8px;
+#menu {
+    height: auto;
+    overflow: auto;
+	margin: 0;
+	li{
+		z-index: 1000000;
+		float: left;
+		padding: $menuPadding;
+		border-radius: 5px;
+		cursor: pointer;
+		margin-right: 10px;
+		&.active {
+			border-bottom-left-radius: 0;
+		}
+	}
+	.level_2{
+		display: none;
+		position: absolute;
+		z-index: 1000000;
+		margin-top: $menuPadding;
+		margin-left: -$menuPadding;
+		li{
+			float: none;
+			border-radius: 0;
+			&:last-child {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+		}
+	}
+}
+#field{
+	width: 800px;
+	height: 500px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	clear: both;
+	float: left;
+	overflow: hidden;
+	position: relative;
+	@include user-select();
+}
+#playground{
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	border-radius: inherit;
+	border: 1px solid #000;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: width 0.2s, height 0.2s;
+	overflow: hidden;
+	&.active{
+		background-color: #fff3b2;
+	}
+}
+#visLoop{
+	width: 800px;
+	height: 10px;
+	background-color: #fff;
+	position: relative;
+	margin-bottom: 20px;
+	clear: both;
+		
+	.inner{
+		width: 0;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+}
+.fruit{
+	position: absolute;
+	cursor: pointer;
+	transition: transform 0.5s;   
+	z-index: 1000;
+	transition: border 0.5s;
+	margin: auto;
+}
+.bigfruit {
+	width: 0;
+    bottom: 0;
+    left: 0 !important;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0 !important;
+	z-index: 0;
+}
+#shopwrapper{
+	width: 350px;
+	height: 100%;
+	right: 0;
+	position: absolute;
+	overflow-x: hidden;
+	top: 0;
+	
+	.inner{
+		width: 300%;
+		transition: margin 1s;
+	}
+	ul{
+		float: left;
+		width: calc(100% / 3);
+		margin: 0;
+		transition: left 0.6s;
+		&#s1{
+			left: 0;
+		}
+		&#s2{
+			left: 100%;
+		}
+		&#s3{
+			left: 200%;
+		}
+		li{
+			&.tooltip{
+				border-bottom: 1px solid #000;
+				padding: 5px 30px;
+			}
+			&.upgrade {
+				border-bottom: 1px solid #000;
+				border-top: 0;
+				padding: 10px 10px 0px 80px;
+				position: relative;
+				z-index: 100;
+				.amount {
+					font-size: 30px;
+					position: absolute;
+					left: 0px;
+					top: 0px;
+				}
+				&.deactivated{
+					background-color: #666;
+				}
+				&.mystery, &.legendary{
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	#categorywrap{
+		border-bottom:1px solid #000;
+		.category {  
+			cursor: pointer;
+			float: left;
+			height: 40px;
+			padding: 10px;
+			position: static;
+			text-align: center;
+			width: calc(100% / 3);
+		}
+	}
+}
+.inactiveBar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #999;
+	z-index: -100;
+	width: 0;
+	height:100%;
+}
+#timebar{
+	width: 300%;
+	transition: margin 1s;
+}
+.bold{
+	font-weight: 700;
+}
+.hiddenBar{
+	height: 30px; 
+	width: 100%;
+	display: none;
+	border: 1px solid #000;
+	border-bottom: 0;
+	margin-top: 10px;
+}
+.buy1, .buy10, .sell{
+	cursor: pointer;
+	text-align: center;
+    width: calc(100% / 3);
+	height: 100%;
+	display: block;
+	float: left;
+	margin-top: 0px;
+}
+.buy1, .buy10, .sell,.amount,.category{
+	@include user-select();
+}
+#info{
+}
+#season{
+	position: absolute;
+	top: -50px;
+	right: 20px;
+}
+#overlay{
+	position: fixed;
+	width: 0;
+	left: 0;
+	height: 500px;
+	top: 0;
+	color: #FFF;
+	z-index: 1000000;
+	overflow: hidden;
+	transition: width 1s;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	
+	ul {
+		list-style-type: initial;
+		padding-left: 20px;
+	}
+	.wrap {
+		padding: 10px;
+		height: 100%;
+		width: 1000px;
+		overflow-y: scroll;
+	}
+
+}
+#overlayBG {
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 800000;
+    top: 0;
+    left: 0;
+    background-color: rgba(150,150,150,0.6);
+}
+
+/** Seasons **/
+
+@mixin spring($opacity){
+  background-color: rgba(121,182,0, $opacity);
+}
+@mixin summer($opacity){
+  background-color: rgba(255,165,0, $opacity);
+}
+@mixin fall($opacity){
+  background-color: rgba(147,77,64, $opacity);
+}
+@mixin winter($opacity){
+  background-color: rgba(0,197,255, $opacity);
+}
+
+$spring1 : #E9F2D8;
+$spring2 : #66cc33;
+$spring3 : #339900;
+$spring4 : #339900;
+
+$summer1 : #fff9cc;
+$summer2 : #ffe100;
+$summer3 : #ff9e00;
+$summer4 : #ff9e00;
+
+$fall1 : #e3d499;
+$fall2 : #d6af3c;
+$fall3 : #ae6503;
+$fall4 : #ae6503;
+
+$winter1 : #B9EEFD;
+$winter2 : #60D3F5;
+$winter3 : #139AC2;
+$winter4 : #139AC2;
+
+[class*="color"]{
+	transition: background 1s;
+}
+.spring{
+	.color_0{
+		&:hover,&.active{
+			background-color: $spring2;
+		}
+	}
+	.color_1{
+		background-color: $spring1;
+	}
+	.color_2{
+		background-color: $spring2;
+		&.hov:hover, &.active{
+			background-color: $spring3;
+		}
+	}
+	.color_3{
+		background-color: $spring3;
+		&.hov:hover{
+			background-color: $spring4;
+		}
+	}
+}
+.summer{
+	.color_0{
+		&:hover,&.active{
+			background-color: $summer2;
+		}
+	}
+	.color_1{
+		background-color: $summer1;
+	}
+	.color_2{
+		background-color: $summer2;
+		&.hov:hover, &.active{
+			background-color: $summer3;
+		}	
+	}
+	.color_3{
+		background-color: $summer3;
+		&.hov:hover{
+			background-color: $summer4;
+		}	
+	}
+}
+.fall{
+	.color_0{
+		&:hover,&.active{
+			background-color: $fall2;
+		}
+	}
+	.color_1{
+		background-color: $fall1;
+	}
+	.color_2{
+		background-color: $fall2;
+		&.hov:hover, &.active{
+			background-color: $fall3;
+		}
+	}
+	.color_3{
+		background-color: $fall3;
+		&.hov:hover{
+			background-color: $fall4;
+		}
+	}
+}
+.winter{
+	#field{
+		background: url("../images/winter/snow.jpg");
+	}
+	#playground{
+		width: 70%;
+		height: 70%;
+	}
+	.color_0{
+		&:hover,&.active{
+			background-color: $winter2;
+		}
+	}
+	.color_1{
+		background-color: $winter1;
+	}
+	.color_2{
+		background-color: $winter2;
+		&.hov:hover, &.active{
+			background-color: $winter3;
+		}	
+	}
+	.color_3{
+		background-color: $winter3;
+		&.hov:hover{
+			background-color: $winter4;
+		}	
+	}
+}
+
+.deactivated{
+	background-color: #888;
+}
